@@ -22,8 +22,10 @@ app.use(session({
     secret: 'ede31adb-0bfb-442e-b091-011270eefd17',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
-  }))
+    cookie: {
+        secure: false
+    }
+}))
 
 app.use(express.json())
 

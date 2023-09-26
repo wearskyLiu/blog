@@ -4,6 +4,7 @@ const { body } = require('express-validator');
 const Models = require('../db/Models.js');
 const router = express.Router();
 const userAPI = require('../controller/user.js');
+const req = require('express/lib/request.js');
 
 router.post('/register',
     validate(

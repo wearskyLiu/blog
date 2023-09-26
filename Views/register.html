@@ -86,9 +86,9 @@
         <div class="login-wrapper">
             <div class="header">注册</div>
             <div class="form-wrapper">
-                <input type="text" name="username" placeholder="用户名" class="input-item">
-                <input type="text" name="email" placeholder="邮箱" class="input-item">
-                <input type="password" name="password" placeholder="密码" class="input-item">
+                <input type="text" id="username" placeholder="用户名" class="input-item">
+                <input type="text" id="email" placeholder="邮箱" class="input-item">
+                <input type="password" id="password" placeholder="密码" class="input-item">
                 <div class="btn" id="register">注册</div>
             </div>
             <div class="msg">
@@ -98,10 +98,28 @@
         </div>
     </div>
     <script>
-        var oDiv = document.getElementById("register");
-        oDiv.addEventListener("click", async function () {
-            var a = fetch('/test');
-            console.dir(a)
+        let _username = document.getElementById("username");
+        let _email = document.getElementById("email");
+        let _password = document.getElementById("password");
+        let _register = document.getElementById("register");
+
+        _register.addEventListener("click", async function () {
+            let regResponse1 = await fetch('/register', {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                }),
+                body: JSON.stringify({
+                    "username": _username.value,
+                    "email": _email.value,
+                    "password": _password.value
+                })
+            })
+            let regResponse2 = await regResponse1.json()
+            console.log(regResponse1.status)
+            if (regResponse1.status === 201) {
+                window.location.href = "/test"
+            }
         });
     </script>
 </body>
