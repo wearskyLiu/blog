@@ -19,7 +19,6 @@ router.post('/register',
                 if (emails) {
                     return Promise.reject('This email/username has been registered.')
                 }
-
             })
         ]),
     userAPI.register
@@ -34,12 +33,16 @@ router.post('/login',
     userAPI.login
 )
 
-router.get('/login',(req,res)=>{
+router.get('/login', (req, res) => {
     res.render('login.html')
 })
 
-router.get('/register',(req,res)=>{
+router.get('/register', (req, res) => {
     res.render('register.html')
+})
+
+router.get('/test', (req, res) => {
+    res.status(200).json({ Value: 123 })
 })
 
 module.exports = router;
