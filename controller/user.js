@@ -8,6 +8,7 @@ module.exports.register = async (req, res) => {
         req.body.password = crypto(req.body.password, 'md5');
         let newUser = new Models.registerModel(req.body);
         await newUser.save();
+        req.session.userInfor=newUser;
 
         res.status(201).json(
             newUser

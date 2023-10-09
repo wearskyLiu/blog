@@ -44,6 +44,7 @@ router.get('/register', (req, res) => {
 
 router.get('/test', (req, res) => {
     res.status(200).json({ Value: 123 })
+    console.log(req.session.userInfor)
 })
 
 module.exports = router;

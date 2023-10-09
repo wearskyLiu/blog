@@ -3,6 +3,7 @@ const router = require('./router/index.js');
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
+
 //const test = require('./controller/user.js');
 //const bodyParser = require('body-parser');
 //const mongoose = require('mongoose');
@@ -23,7 +24,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: false
+        secure: false,
+        maxAge:1000*60
     }
 }))
 
