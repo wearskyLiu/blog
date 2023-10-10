@@ -3,6 +3,7 @@ const router = require('./router/index.js');
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 //const test = require('./controller/user.js');
 //const bodyParser = require('body-parser');
@@ -22,11 +23,15 @@ app.set('view engine', 'html');
 app.use(session({
     secret: 'ede31adb-0bfb-442e-b091-011270eefd17',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         secure: false,
-        maxAge:1000*60
-    }
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://127.0.0.1:27017',
+        dbName: 'blog'
+    })
 }))
 
 app.use(express.json())
