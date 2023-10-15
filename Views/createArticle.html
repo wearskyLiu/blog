@@ -36,11 +36,16 @@
         const editorConfig = {
             placeholder: 'Type here...',
             autoFocus: false,
+            MENU_CONF: {},
             onChange(editor) {
                 const html = editor.getHtml()
                 console.log('editor content', html)
                 // 也可以同步到 <textarea>
             }
+        }
+
+        editorConfig.MENU_CONF['uploadImage'] = {
+            server: '/file'
         }
 
         const editor = createEditor({
