@@ -19,16 +19,39 @@
       width: 100%;
     }
 
-    #container {
+    #wholePage {
       height: 100%;
       width: 100%;
       background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    }
+
+    #header {
+      background: #732A73;
+      height: 41px;
+    }
+
+    .headerIcon {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .headerIcon>div {
+      color: white;
+      margin: 10px;
     }
   </style>
 </head>
 
 <body>
-  <div id="container"></div>
+  <div id="wholePage">
+    <div class="div" id="header">
+      <div class="headerIcon">
+        <div>Register</div>
+        <div>Sign in</div>
+      </div>
+    </div>
+  </div>
+
 
 
 </body>
