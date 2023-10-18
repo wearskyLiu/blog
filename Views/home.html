@@ -14,45 +14,90 @@
 
     html,
     body {
-
       height: 100%;
       width: 100%;
+      font-family: sans-serif;
     }
 
     #wholePage {
-      height: 100%;
+      min-height: 100%;
       width: 100%;
-      background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      background: rgb(245, 236, 236);
     }
 
-    #header {
+    #head {
       background: #732A73;
       height: 41px;
     }
 
-    .headerIcon {
-      display: flex;
-      justify-content: flex-end;
+    .headIcon {
+      display: grid;
+      grid-template-columns: 20fr 1fr 1fr 1fr;
+      white-space: nowrap;
     }
 
-    .headerIcon>div {
+    .headIcon>div {
       color: white;
       margin: 10px;
+    }
+
+    .headIcon>div>a {
+      font-size: 12px;
+    }
+
+    #test {
+      position: relative;
+      left: 30px;
+    }
+
+    #forumBody {
+      padding: 10%;
+    }
+
+    #forumBody>div {
+      border: 1px solid #969590;
+      margin-bottom: -1px;
+    }
+
+    #profileImg {
+      border-radius: 50%;
+      margin-top: -10px;
+    }
+
+    .article {
+      background: white;
     }
   </style>
 </head>
 
 <body>
   <div id="wholePage">
-    <div class="div" id="header">
-      <div class="headerIcon">
-        <div>Register</div>
-        <div>Sign in</div>
+    <div class="div" id="head">
+      <div class="headIcon">
+        <div>
+          <span id="test">PowerApps</span>
+        </div>
+        <div>
+          <a class="a">Register </a>
+        </div>
+        <div>
+          <a class="a">Sign in </a>
+        </div>
+        <div class="div">
+          <img id="profileImg" src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png" width="41px" alt="">
+        </div>
+
       </div>
+
+    </div>
+    <div class="div" id="forumBody">
+      <div class="article">a</div>
+      <div class="article">b</div>
+      <div class="article">c</div>
+      <div class="article">d</div>
+      <div class="article">e</div>
     </div>
   </div>
-
-
 
 </body>
 
