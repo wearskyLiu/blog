@@ -50,6 +50,7 @@
         #test {
             position: relative;
             left: 30px;
+            top: 2px;
         }
 
         #profileImg {
@@ -83,7 +84,7 @@
         }
 
         #subjectInputDiv {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             width: 100%;
             height: 40px;
         }
@@ -92,6 +93,17 @@
             border: 1px solid #605E5C;
             width: 100%;
             height: 100%;
+            padding: 6px 12px;
+            box-sizing: border-box;
+        }
+
+        #bodyDiv {
+            margin-bottom: 10px;
+        }
+
+        #bodyDiv>label {
+            font-size: 15px;
+            font-weight: bold;
         }
 
         #submitDiv {
@@ -99,9 +111,23 @@
             left: 50%;
         }
 
+        #submitDiv>span>input {
+            color: #fff;
+            background-color: #732A73;
+            border-radius: 0;
+            min-width: 88px;
+            min-height: 42px;
+            padding: 12.5px 25px;
+            box-sizing: border-box;
+            border: 1px dashed transparent;
+            cursor: pointer;
+            transform: translate(-50%);
+        }
+
         #editor—wrapper {
             border: 1px solid #ccc;
             z-index: 100;
+            margin-bottom: 10px;
             /* 按需定义 */
         }
 
@@ -144,13 +170,20 @@
                 <label>Subject</label>
             </div>
             <div id="subjectInputDiv">
-                <input type="text">
+                <input placeholder="Enter a subject" maxlength="300" type="text" autofocus>
+            </div>
+            <div id="bodyDiv">
+                <label>Body</label>
             </div>
             <div id="editor—wrapper">
                 <div id="toolbar-container"><!-- 工具栏 --></div>
                 <div id="editor-container"><!-- 编辑器 --></div>
             </div>
-            <div id="submitDiv">abc</div>
+            <div id="submitDiv">
+                <span>
+                    <input type="submit" value="Post">
+                </span>
+            </div>
         </div>
     </div>
     <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
