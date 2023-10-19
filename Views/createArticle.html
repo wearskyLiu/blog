@@ -8,6 +8,97 @@
     <title>New Article</title>
     <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: sans-serif;
+        }
+
+        #wholePage {
+            min-height: 100%;
+            width: 100%;
+            background: rgb(245, 236, 236);
+            position: relative;
+        }
+
+        #head {
+            background: #732A73;
+            height: 41px;
+        }
+
+        .headIcon {
+            display: grid;
+            grid-template-columns: 20fr 1fr 1fr 1fr;
+            white-space: nowrap;
+        }
+
+        .headIcon>div {
+            color: white;
+            margin: 10px;
+        }
+
+        .headIcon>div>a {
+            font-size: 12px;
+        }
+
+        #test {
+            position: relative;
+            left: 30px;
+        }
+
+        #profileImg {
+            border-radius: 50%;
+            margin-top: -10px;
+        }
+
+        #body {
+            margin-top: 20px;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        #h1Div {
+            margin-bottom: 20px;
+        }
+
+        #h1Div>h1 {
+            font-weight: 400;
+            font-size: 32px;
+
+        }
+
+        #subjectLabelDiv {
+            margin-bottom: 10px;
+        }
+
+        #subjectLabelDiv>label {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        #subjectInputDiv {
+            margin-bottom: 20px;
+            width: 100%;
+            height: 40px;
+        }
+
+        #subjectInputDiv>input {
+            border: 1px solid #605E5C;
+            width: 100%;
+            height: 100%;
+        }
+
+        #submitDiv {
+            position: absolute;
+            left: 50%;
+        }
+
         #editor—wrapper {
             border: 1px solid #ccc;
             z-index: 100;
@@ -25,9 +116,42 @@
 </head>
 
 <body>
-    <div id="editor—wrapper">
-        <div id="toolbar-container"><!-- 工具栏 --></div>
-        <div id="editor-container"><!-- 编辑器 --></div>
+    <div id="wholePage">
+        <div class="div" id="head">
+            <div class="headIcon">
+                <div>
+                    <span id="test">PowerApps</span>
+                </div>
+                <div>
+                    <a class="a">Register </a>
+                </div>
+                <div>
+                    <a class="a">Sign in </a>
+                </div>
+                <div class="div">
+                    <img id="profileImg" src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"
+                        width="41px" alt="">
+                </div>
+
+            </div>
+
+        </div>
+        <div id="body">
+            <div id="h1Div">
+                <h1>New Message</h1>
+            </div>
+            <div id="subjectLabelDiv">
+                <label>Subject</label>
+            </div>
+            <div id="subjectInputDiv">
+                <input type="text">
+            </div>
+            <div id="editor—wrapper">
+                <div id="toolbar-container"><!-- 工具栏 --></div>
+                <div id="editor-container"><!-- 编辑器 --></div>
+            </div>
+            <div id="submitDiv">abc</div>
+        </div>
     </div>
     <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
     <script>
@@ -56,7 +180,9 @@
 
         })
 
-        const toolbarConfig = {}
+        const toolbarConfig = {};
+
+        toolbarConfig.excludeKeys = ['group-video'];
 
         const toolbar = createToolbar({
             editor,
