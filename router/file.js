@@ -4,7 +4,7 @@ const multer = require('multer');
 
 //'D:/Blog/blog/public/img' 
 //'C:/Blog/public/img'
-const upload = multer({ dest: 'D:/Blog/blog/public/img' });
+const upload = multer({ dest: 'C:/Blog/public/img' });
 
 router.post('/file', upload.single('wangeditor-uploaded-image'), (req, res) => {
     console.log(req.file)
