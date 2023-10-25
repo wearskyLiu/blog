@@ -148,12 +148,6 @@
                 <div>
                     <span id="test">PowerApps</span>
                 </div>
-                <!-- <div>
-                    <a class="a">Register </a>
-                </div>
-                <div>
-                    <a class="a">Sign in </a>
-                </div>-->
                 <div class="div">
                     <img id="profileImg" src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"
                         width="41px" alt="">
@@ -170,7 +164,7 @@
                 <label>Subject</label>
             </div>
             <div id="subjectInputDiv">
-                <input placeholder="Enter a subject" maxlength="300" type="text" autofocus>
+                <input id="subjectInput" placeholder="Enter a subject" maxlength="300" type="text" autofocus>
             </div>
             <div id="bodyDiv">
                 <label>Body</label>
@@ -181,7 +175,7 @@
             </div>
             <div id="submitDiv">
                 <span>
-                    <input type="submit" value="Post">
+                    <input id="submitBtn" type="submit" value="Post">
                 </span>
             </div>
         </div>
@@ -223,6 +217,29 @@
             config: toolbarConfig,
             mode: 'default' // or 'simple'
         })
+
+        let _submitBtn = document.getElementById('submitBtn');
+        let _subjectInput = document.getElementById('subjectInput');
+        _submitBtn.addEventListener('click', async function () {
+            let regResponse1 = await fetch('/createArticle', {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                }),
+                body: JSON.stringify(
+                    {
+                        "subject": _subjectInput.value,
+                        "body": editor.getHtml(),
+                    })
+            })
+
+            let regResponse2 = await regResponse1.json();
+            console.log(regResponse1.status);
+            console.log(regResponse2);
+
+        }
+        )
+
     </script>
 </body>
 
