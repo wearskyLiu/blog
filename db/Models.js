@@ -18,6 +18,7 @@ let articleSchema = new mongoose.Schema(
     }
 )
 
-let registerModel = mongoose.model("register", registerSchema)
+let registerModel = mongoose.model("register", registerSchema);
+let articleModel = mongoose.model("article", articleSchema)
 
-module.exports = { registerModel };
+module.exports = { registerModel, articleModel };

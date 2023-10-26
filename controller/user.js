@@ -20,7 +20,7 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = async (req, res) => {
     try {
-        let user = await Models.registerModel.findOne({ email: req.body.email });
+        let user = await Models.registerModel.findOne({ email: req.body.email }).exec();
         if (user) {
             req.body.password = crypto(req.body.password, 'md5');
             if (req.body.password === user.password) {
