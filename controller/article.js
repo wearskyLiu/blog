@@ -10,8 +10,8 @@ module.exports.createArticle = async (req, res) => {
             return res.status(201).json({ articleId: newArticle._id.toString() })
         }
 
-        res.status(404).send('user not found');
+        res.status(403).send('please log in');
     } catch (error) {
-        res.status(500).json({ value: error });
+        res.status(500).json({ value: 'err' });
     }
 }
