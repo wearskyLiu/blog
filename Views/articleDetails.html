@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Detail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: sans-serif;
+        }
+
+        #wholePage {
+            min-height: 100%;
+            width: 100%;
+            background: rgb(245, 236, 236);
+            position: relative;
+        }
+
+        #head {
+            background: #732A73;
+            height: 41px;
+        }
+
+        .headIcon {
+            display: grid;
+            grid-template-columns: 22fr 1fr;
+            white-space: nowrap;
+        }
+
+        .headIcon>div {
+            color: white;
+            margin: 10px;
+        }
+
+        .headIcon>div>a {
+            font-size: 12px;
+        }
+
+        #test {
+            position: relative;
+            left: 30px;
+            top: 2px;
+        }
+
+        #profileImg {
+            border-radius: 50%;
+            margin-top: -10px;
+        }
+
+        #artH1Div>h1 {
+            width: 100%;
+            max-width: 1300px;
+            margin: 50px auto 30px;
+            word-wrap: break-word;
+        }
+
+        #userImgDiv {
+            float: left;
+            height: 41px;
+        }
+
+        #userNameDiv {
+            float: left;
+        }
+
+        #art {
+            width: 100%;
+            max-width: 1300px;
+            margin: 50px auto 0px;
+            height: auto;
+            background-color: #f8f8f8;
+        }
+
+        #profileImg2 {
+            border-radius: 50%;
+        }
+
+        #userNameDiv {
+            margin-left: 10px;
+            margin-top: 7px;
+        }
+
+        #artBody {
+            clear: both;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wholePage">
+        <div class="div" id="head">
+            <div class="headIcon">
+                <div>
+                    <span id="test">PowerApps</span>
+                </div>
+                <div class="div">
+                    <img id="profileImg" class="profileImg2"
+                        src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png" width="41px" alt="">
+                </div>
+
+            </div>
+
+        </div>
+        <div id="body">
+            <div id="artH1Div">
+                <h1>Getting error message when select "set a reminder" under power automate for sharepoint list
+                </h1>
+            </div>
+            <div id="art">
+                <div id="userImgDiv">
+                    <img id="profileImg2" src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"
+                        width="41px" alt="">
+                </div>
+                <div id="userNameDiv">
+                    <a href="test">
+                        <span>username</span>
+                    </a>
+                </div>
+                <br clear="all">
+                <div id="artBody">1223<br>425<br>sdwf<br>wfwg<br></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

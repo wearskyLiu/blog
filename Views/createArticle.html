@@ -221,7 +221,7 @@
         let _submitBtn = document.getElementById('submitBtn');
         let _subjectInput = document.getElementById('subjectInput');
         _submitBtn.addEventListener('click', async function () {
-            let regResponse1 = await fetch('/createArticle', {
+            let artResponse1 = await fetch('/createArticle', {
                 method: "POST",
                 headers: new Headers({
                     "Content-Type": "application/json"
@@ -233,9 +233,9 @@
                     })
             })
 
-            let regResponse2 = await regResponse1.json();
-            console.log(regResponse1.status);
-            console.log(regResponse2);
+            let artResponse2 = await artResponse1.json();
+            console.log(artResponse1.status);
+            console.log(artResponse2);
 
         }
         )
