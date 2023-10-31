@@ -18,4 +18,16 @@ router.get('/createArticle', async (req, res) => {
 
 router.post('/createArticle', articleAPI.createArticle)
 
+router.get('/article/:articleId', async (req, res) => {
+    try {
+        let article = await Models.articleModel.findById(req.params.articleId).exec();
+        if (article) {
+            return res.render('articleDetails.html', { subject: article.subject, body: article.body })
+        }
+    } catch (error) {
+        res.status(500).json({ value: 'err' });
+    }
+
+})
+
 module.exports = router;

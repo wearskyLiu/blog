@@ -236,7 +236,9 @@
             let artResponse2 = await artResponse1.json();
             console.log(artResponse1.status);
             console.log(artResponse2);
-
+            if (artResponse1.status === 201) {
+                window.location.href = '/article/' + artResponse2.articleId
+            }
         }
         )
 
