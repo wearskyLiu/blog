@@ -30,4 +30,13 @@ router.get('/article/:articleId', async (req, res) => {
 
 })
 
+router.get('/home/page/:id', async (req, res) => {
+    let page = (parseInt(req.params.id) - 1) * 10;
+    let articles = await Models.articleModel.find().sort('-createdDate').limit(10).skip(page).exec();
+    console.log(articles)
+    if (articles) {
+        return res.render('home', { article: articles })
+    }
+})
+
 module.exports = router;
