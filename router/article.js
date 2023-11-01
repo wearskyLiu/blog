@@ -39,4 +39,18 @@ router.get('/home/page/:id', async (req, res) => {
     }
 })
 
+router.get('/home', async (req, res) => {
+    let articles = await Models.articleModel.find().sort('-createdDate').limit(10).skip(0).exec();
+    let count = await Models.articleModel.find().count();
+    console.log(Math.ceil(count / 10));
+    console.log(Array.from(Array(Math.ceil(count / 10)).keys(), n => n + 1))
+
+    if (Math.ceil(count / 10) > 6) {
+
+        return res.render('home', { article: articles, page: [1, 2, 3, 4, 5, 6] })
+    }
+
+    return res.render('home', { article: articles, page: Array.from(Array(Math.ceil(count / 10)).keys(), n => n + 1) })
+})
+
 module.exports = router;

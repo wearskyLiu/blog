@@ -22,7 +22,7 @@
     #wholePage {
       min-height: 100%;
       width: 100%;
-      background: rgb(245, 236, 236);
+      background: #f8f8f8;
       position: relative;
     }
 
@@ -68,6 +68,22 @@
       bottom: 0px;
     }
 
+    #subjectDiv>input {
+      left: 79%;
+      position: absolute;
+      bottom: 0px;
+      color: #fff;
+      background-color: #732A73;
+      border-radius: 0;
+      min-width: 88px;
+      min-height: 42px;
+      padding: 12.5px 25px;
+      box-sizing: border-box;
+      border: 1px dashed transparent;
+      cursor: pointer;
+      transform: translate(-50%);
+    }
+
     #body {
       display: grid;
       grid-auto-rows: 75px;
@@ -76,19 +92,50 @@
     }
 
     .articles {
-      position: relative;
-    }
-
-    .articles {
-      border-top: 1px solid #c4c4c4;
+      /*border-top: 1px solid #c4c4c4;
       border-bottom: 1px solid #c4c4c4;
-      margin-bottom: -1px;
+      ;*/
+      position: relative;
+      box-shadow: 1px 1px 5px 0.1px grey;
+
+      background-color: white;
+
     }
 
     .articles>h5 {
       position: absolute;
       top: 50%;
-      transform: translate(0%, -50%)
+      transform: translate(0%, -50%);
+      left: 10px;
+    }
+
+    .center {
+      text-align: center;
+      width: 100%;
+    }
+
+    .pagination {
+      display: inline-block;
+    }
+
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+    }
+
+    .pagination a.active {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {
+      background-color: #ddd;
     }
   </style>
 </head>
@@ -106,9 +153,13 @@
         </div>
       </div>
     </div>
+
     <div id="subjectDiv">
       <h1>PP Fourm</h1>
+      <input id="submitBtn" type="submit" value="Create">
     </div>
+
+
     <div id="body">
       {{each article}}
       <div class="articles">
@@ -118,8 +169,30 @@
 
     </div>
 
+    <div class="center">
+      <div class="pagination">
+        <a href="#" id="before">&laquo;</a>
+        {{each page}}
+        {{if $value==1}} <a href="/home/page/{{$value}}" class="active">{{$value}}</a> {{/if}}
+        {{if $value!==1}} <a href="/home/page/{{$value}}">{{$value}}</a> {{/if}}
+        {{/each}}
+        <a href="#" id="next">&raquo;</a>
+      </div>
+    </div>
+
   </div>
   <script>
+    let _active = document.getElementsByClassName('active')[0];
+    let _next = document.getElementById('next');
+    let _before = document.getElementById('before');
+    let pagenum = parseInt(_active.textContent);
+    _next.addEventListener('click', () => {
+      location.href = '/home/page/' + (pagenum + 1)
+    })
+
+    _before.addEventListener('click', () => {
+      location.href = '/home/page/' + (pagenum - 1)
+    })
 
   </script>
 </body>
