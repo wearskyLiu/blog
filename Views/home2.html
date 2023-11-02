@@ -173,8 +173,8 @@
       <div class="pagination">
         <a href=javascript:void(0); id="before">&laquo;</a>
         {{each page}}
-        {{if $value==1}} <a href="/home/page/{{$value}}" class="active">{{$value}}</a> {{/if}}
-        {{if $value!==1}} <a href="/home/page/{{$value}}">{{$value}}</a> {{/if}}
+        {{if $value==current}} <a href="/home/page/{{$value}}" class="active">{{$value}}</a> {{/if}}
+        {{if $value!=current}} <a href="/home/page/{{$value}}">{{$value}}</a> {{/if}}
         {{/each}}
         <a href=javascript:void(0); id="next">&raquo;</a>
       </div>
@@ -189,7 +189,7 @@
     _next.addEventListener('click', () => {
       location.href = '/home/page/' + (pagenum + 1)
     })
-    if (pagenum !== 1) {
+    if (pagenum != 1) {
       _before.addEventListener('click', () => {
         location.href = '/home/page/' + (pagenum - 1)
       })

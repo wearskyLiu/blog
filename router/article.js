@@ -31,11 +31,20 @@ router.get('/article/:articleId', async (req, res) => {
 })
 
 router.get('/home/page/:id', async (req, res) => {
-    let page = (parseInt(req.params.id) - 1) * 10;
-    let articles = await Models.articleModel.find().sort('-createdDate').limit(10).skip(page).exec();
-    console.log(articles)
-    if (articles) {
-        return res.render('home', { article: articles })
+    try {
+        let page = (parseInt(req.params.id) - 1) * 10;
+        let articles = await Models.articleModel.find().sort('-createdDate').limit(10).skip(page).exec();
+        let count = await Models.articleModel.find().count();
+
+        if (articles.length > 0) {
+            if (parseInt(req.params.id) > 6) {
+                return res.render('home2', { article: articles, page: Array.from(Array(parseInt(req.params.id)).keys(), n => n + 1).slice(-6), current: req.params.id })
+            }
+            console.log(Array.from(Array(parseInt(req.params.id)).keys(), n => n + 1))
+            return res.render('home2', { article: articles, page: Array.from(Array(Math.ceil(count / 10)).keys(), n => n + 1), current: req.params.id })
+        }
+    } catch (error) {
+        res.status(500).send('err');
     }
 })
 
