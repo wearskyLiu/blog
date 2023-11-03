@@ -93,7 +93,7 @@
                 <input type="text" id="username" placeholder="用户名" class="input-item">
                 <input type="text" id="email" placeholder="邮箱" class="input-item">
                 <input type="password" id="password" placeholder="密码" class="input-item">
-                <div class="btn">登录</div>
+                <div class="btn" id="login">登录</div>
             </div>
             <div class="msg">
                 还没有账号？
@@ -101,6 +101,33 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let _username = document.getElementById("username");
+        let _email = document.getElementById("email");
+        let _password = document.getElementById("password");
+        let _login = document.getElementById("login");
+
+        _login.addEventListener("click", async function () {
+            let regResponse1 = await fetch('/login', {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                }),
+                body: JSON.stringify({
+                    "username": _username.value,
+                    "email": _email.value,
+                    "password": _password.value
+                })
+            })
+            let regResponse2 = await regResponse1.json();
+            console.log(regResponse1.status);
+            console.log(regResponse2);
+            if (regResponse1.status === 200) {
+                window.location.href = "/home"
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -121,10 +121,10 @@
                 })
             })
             let regResponse2 = await regResponse1.json();
-            console.log(regResponse1.status);
-            console.log(regResponse2);
-            if (regResponse1.status === 202) {
-                window.location.href = "/test"
+            //console.log(regResponse1.status);
+            //console.log(regResponse2);
+            if (regResponse1.status === 200) {
+                window.location.href = "/home"
             }
         });
     </script>

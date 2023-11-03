@@ -31,11 +31,24 @@
       height: 41px;
     }
 
+    {{if auth==1}} 
     .headIcon {
       display: grid;
       grid-template-columns: 22fr 1fr;
       white-space: nowrap;
     }
+    {{/if}}
+
+    {{if auth==0}}
+    .headIcon {
+      display: grid;
+      grid-template-columns: 22fr 2fr;
+      white-space: nowrap;
+    } 
+    #login{
+      margin-left: 10px;
+    }
+    {{/if}}
 
     .headIcon>div {
       color: white;
@@ -43,13 +56,16 @@
     }
 
     .headIcon>div>a {
-      font-size: 12px;
+      font-size: 14px;
+      text-decoration: none;
+      color: white;
     }
 
     #test {
       position: relative;
       left: 30px;
       top: 2px;
+      cursor: pointer;
     }
 
     #profileImg {
@@ -148,15 +164,18 @@
           <span id="test">PowerApps</span>
         </div>
         <div class="div">
-          <img id="profileImg" class="profileImg2" src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"
-            width="41px" alt="">
+          {{if auth==1}} <img id="profileImg" class="profileImg2"
+            src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png" width="41px" alt=""> {{/if}}
+
+          {{if auth==0}}<a href='/register' id="register">register</a>
+          <a href='/login' id="login">login</a> {{/if}}
         </div>
       </div>
     </div>
 
     <div id="subjectDiv">
       <h1>PP Fourm</h1>
-      <input id="submitBtn" type="submit" value="Create">
+      {{if auth==1}} <input id="createPostBtn" type="submit" value="Create"> {{/if}}
     </div>
 
 
@@ -172,10 +191,23 @@
     <div class="center">
       <div class="pagination">
         <a href=javascript:void(0); id="before">&laquo;</a>
+
+        {{if mode==0}}
+
         {{each page}}
         {{if $value==1}} <a href="/home/page/{{$value}}" class="active">{{$value}}</a> {{/if}}
         {{if $value!==1}} <a href="/home/page/{{$value}}">{{$value}}</a> {{/if}}
         {{/each}}
+
+        {{else if mode==1}}
+
+        {{each page}}
+        {{if $value==current}} <a href="/home/page/{{$value}}" class="active">{{$value}}</a> {{/if}}
+        {{if $value!=current}} <a href="/home/page/{{$value}}">{{$value}}</a> {{/if}}
+        {{/each}}
+
+        {{/if}}
+
         <a href=javascript:void(0); id="next">&raquo;</a>
       </div>
     </div>
@@ -186,6 +218,17 @@
     let _next = document.getElementById('next');
     let _before = document.getElementById('before');
     let pagenum = parseInt(_active.textContent);
+    let homebtn = document.getElementById('test');
+    let _createPostBtn = document.getElementById('createPostBtn');
+
+    homebtn.addEventListener('click', () => {
+      location.href = '/home'
+    })
+
+    _createPostBtn.addEventListener('click', () => {
+      location.href = '/createArticle'
+    })
+
     _next.addEventListener('click', () => {
       location.href = '/home/page/' + (pagenum + 1)
     })
