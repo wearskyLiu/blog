@@ -227,6 +227,10 @@
             location.href = '/home'
         })
 
+        homebtn.addEventListener('click', () => {
+            location.href = '/home'
+        })
+
         _submitBtn.addEventListener('click', async function () {
             let artResponse1 = await fetch('/createArticle', {
                 method: "POST",
@@ -244,7 +248,7 @@
             console.log(artResponse1.status);
             console.log(artResponse2);
             if (artResponse1.status === 201) {
-                window.location.href = '/article/' + artResponse2.articleId
+                window.location.href = '/articleDetail/' + artResponse2.articleId
             }
         }
         )

@@ -50,6 +50,7 @@
             position: relative;
             left: 30px;
             top: 2px;
+            cursor: pointer;
         }
 
         #profileImg {
@@ -104,6 +105,8 @@
 
         #artBody>p {
             word-wrap: break-word;
+            padding-left: 10px;
+            padding-right: 10px;
         }
     </style>
 </head>
@@ -125,7 +128,7 @@
         </div>
         <div id="body">
             <div id="artH1Div">
-                <h1>{{subject}}
+                <h1>{{details.subject}}
                 </h1>
             </div>
             <div id="art">
@@ -134,8 +137,8 @@
                         width="41px" alt="">
                 </div>
                 <div id="userNameDiv">
-                    <a href="test">
-                        <span>username</span>
+                    <a href=javascript:void(0);>
+                        <span>{{username}}</span>
                     </a>
                 </div>
                 <br clear="all">
@@ -170,8 +173,15 @@
             }
         };
 
-        var decodeHtml = HtmlUtil.htmlDecode('{{body}}');
-        document.getElementById('artBody').innerHTML = decodeHtml
+        var decodeHtml = HtmlUtil.htmlDecode('{{details.body}}');
+        document.getElementById('artBody').innerHTML = decodeHtml;
+
+        let homebtn = document.getElementById('test');
+
+        homebtn.addEventListener('click', () => {
+            location.href = '/home'
+        })
+
     </script>
 </body>
 

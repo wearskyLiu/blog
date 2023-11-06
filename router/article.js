@@ -18,7 +18,7 @@ router.get('/createArticle', async (req, res) => {
 
 router.post('/createArticle', articleAPI.createArticle)
 
-router.get('/article/:articleId', async (req, res) => {
+/* router.get('/article/:articleId', async (req, res) => {
     try {
         let article = await Models.articleModel.findById(req.params.articleId).exec();
         if (article) {
@@ -28,7 +28,7 @@ router.get('/article/:articleId', async (req, res) => {
         res.status(500).json({ value: 'err' });
     }
 
-})
+}) */
 
 router.get('/home/page/:id', async (req, res) => {
     try {
@@ -50,7 +50,11 @@ router.get('/home/page/:id', async (req, res) => {
 })
 
 router.get('/home', async (req, res) => {
-    let articles = await Models.articleModel.find().sort('-createdDate').limit(10).skip(0).exec();
+    let articles = await Models.articleModel.find({}, '_id subject  createdDate').sort('-createdDate').limit(10).skip(0).exec();
+    // console.log(articles)
+    articles = articles.map((item) => {
+        return { id: item._id.toString(), subject: item.subject, createdDate: item.createdDate }
+    })
     let count = await Models.articleModel.find().count();
     //console.log(Math.ceil(count / 10));
     //console.log(Array.from(Array(Math.ceil(count / 10)).keys(), n => n + 1))
@@ -61,6 +65,13 @@ router.get('/home', async (req, res) => {
     }
 
     return res.render('home', { article: articles, page: Array.from(Array(Math.ceil(count / 10)).keys(), n => n + 1), mode: 0, auth: req.session.userInfor === undefined ? 0 : 1 })
+})
+
+router.get('/articleDetail/:id', async (req, res) => {
+    let article = await Models.articleModel.findById(req.params.id).exec();
+    let user = await Models.registerModel.findById(article.createdBy,).exec();
+    //console.log(article);
+    res.render('articleDetails', { details: article, username: user.username });
 })
 
 module.exports = router;

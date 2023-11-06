@@ -118,11 +118,13 @@
 
     }
 
-    .articles>h5 {
+    .articles>a {
       position: absolute;
       top: 50%;
       transform: translate(0%, -50%);
       left: 10px;
+      text-decoration: none;
+      color: black;
     }
 
     .center {
@@ -182,7 +184,7 @@
     <div id="body">
       {{each article}}
       <div class="articles">
-        <h5>{{$value.subject}}</h5>
+        <a class="articleList"  href='/articleDetail/{{$value.id}}'>{{$value.subject}}</a>
       </div>
       {{/each}}
 
