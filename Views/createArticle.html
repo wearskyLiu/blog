@@ -202,6 +202,15 @@
 
         const editor = createEditor({
             selector: '#editor-container',
+            content: [
+                {
+                    type: 'paragraph',
+                    children: [
+                        { text: '', fontFamily: '微软雅黑', fontSize: '15px' }
+                    ],
+                    lineHeight: 1.5
+                },
+            ],
             html: '<p><br></p>',
             config: editorConfig,
             mode: 'default' // or 'simple'
